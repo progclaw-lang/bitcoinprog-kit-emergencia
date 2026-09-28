@@ -1,0 +1,20 @@
+{
+  "name": "bitcoinprog-kit-emergencia",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Kit de emergencia de BitcoinProg Wallet: rearmar una multifirma sin internet y sin BitcoinProg",
+  "type": "module",
+  "scripts": {
+    "build": "node build.mjs"
+  },
+  "dependencies": {
+    "@noble/hashes": "^1.8.0",
+    "@noble/ciphers": "^1.3.0",
+    "@scure/bip32": "^2.0.1",
+    "@scure/bip39": "^2.0.1"
+  },
+  "devDependencies": {
+    "esbuild": "^0.24.0"
+  },
+  "license": "MIT"
+}

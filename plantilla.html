@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; img-src data:">
+<title>Kit de emergencia · BitcoinProg Wallet</title>
+<style>
+:root{--bg:#f4f5f7;--card:#fff;--ink:#15181c;--ink2:#505862;--line:#d9dde2;--acc:#d9771a;--ok:#1e7d46;--bad:#b42318;--code:#eef1f4;color-scheme:light}
+@media (prefers-color-scheme:dark){:root{--bg:#0f1216;--card:#171c22;--ink:#e6ebf0;--ink2:#a3aeba;--line:#29313a;--acc:#f0953a;--ok:#5ccb8b;--bad:#f2877d;--code:#20262e;color-scheme:dark}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:15.5px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;padding:24px 16px 48px}
+#kit{max-width:860px;margin:0 auto;display:flex;flex-direction:column;gap:22px}
+header{border-bottom:3px solid var(--acc);padding-bottom:14px}
+h1{margin:0;font-size:30px;line-height:1.15}
+h2{margin:0 0 4px;font-size:22px}
+h3{margin:16px 0 6px;font-size:15px;text-transform:uppercase;letter-spacing:.05em;color:var(--ink2)}
+.sub{margin:4px 0 0;color:var(--ink2)}
+.intro{margin:10px 0 0;max-width:68ch}
+.cartera{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px}
+.pol{margin:0;color:var(--ink2)}
+code,.mono,textarea,input{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+code{display:block;background:var(--code);padding:10px 12px;border-radius:8px;word-break:break-all;font-size:12.5px;line-height:1.5}
+code.dir{font-size:14px}
+.copiar{margin-top:6px;padding:6px 12px;border-radius:7px;border:1px solid var(--line);background:none;color:var(--ink);font:inherit;font-size:13px;cursor:pointer}
+.llaves{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:10px}
+.llaves li{display:flex;flex-direction:column;gap:3px}
+.mono{font-size:12.5px;color:var(--ink2)}
+.pasos{padding-left:22px;display:flex;flex-direction:column;gap:6px;max-width:72ch}
+.boveda{margin-top:14px;border:2px solid var(--acc);border-radius:10px;padding:14px}
+.boveda h3{margin-top:0;color:var(--acc)}
+input,textarea{width:100%;padding:10px 12px;border-radius:8px;border:1px solid var(--line);background:var(--code);color:var(--ink);font-size:14px;margin:6px 0}
+.primario{padding:10px 16px;border-radius:8px;border:0;background:var(--acc);color:#fff;font:inherit;font-weight:700;cursor:pointer}
+.primario:disabled{opacity:.6}
+.semilla{columns:2;column-gap:28px;padding-left:28px;font:600 16px ui-monospace,Menlo,monospace}
+.bien{color:var(--ok);font-weight:700}.mal{color:var(--bad);font-weight:700}
+.aviso{color:var(--bad)}.nota{color:var(--ink2)}
+footer{color:var(--ink2);font-size:13px;border-top:1px solid var(--line);padding-top:12px}
+:focus-visible{outline:2px solid var(--acc);outline-offset:2px}
+@media print{body{background:#fff;color:#000}.copiar,.primario,input,textarea{display:none}}
+</style>
+</head>
+<body>
+<main id="kit"></main>
+<script id="datos" type="application/json">/*DATOS*/</script>
+<script>/*SCRIPT*/</script>
+</body>
+</html>
