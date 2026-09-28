@@ -27,6 +27,8 @@ interface Datos { v: 1; idioma?: string; creado?: string; carteras: Cartera[] }
 const ES = {
   titulo: 'Kit de emergencia',
   sub: 'BitcoinProg Wallet · funciona sin internet y sin BitcoinProg',
+  conBovHdr: 'Esta versión INCLUYE la llave BóvedaProg cifrada: se abre con tus 5 palabras. Guárdala lejos de ellas.',
+  sinBovHdr: 'Esta versión NO incluye la llave BóvedaProg.',
   intro: 'Si la app o nuestros servidores no están, con esta página y tus llaves puedes volver a armar tu multifirma en Sparrow Wallet (gratis, de código abierto) y mover tu dinero. Esta página no se conecta a nada.',
   politica: '{m} de {n}: hacen falta {m} firmas de {n} llaves.',
   descriptor: 'Descriptor para recibir',
@@ -65,6 +67,8 @@ const ES = {
 const EN: typeof ES = {
   titulo: 'Emergency kit',
   sub: 'BitcoinProg Wallet · works offline and without BitcoinProg',
+  conBovHdr: 'This version INCLUDES the encrypted BóvedaProg key: it opens with your 5 words. Keep it away from them.',
+  sinBovHdr: 'This version does NOT include the BóvedaProg key.',
   intro: 'If the app or our servers are gone, with this page and your keys you can rebuild your multisig in Sparrow Wallet (free, open source) and move your money. This page connects to nothing.',
   politica: '{m} of {n}: {m} signatures from {n} keys are needed.',
   descriptor: 'Receive descriptor',
@@ -234,6 +238,9 @@ const raiz = document.getElementById('kit')!
 raiz.append(
   el('header', {}, el('h1', { textContent: T.titulo }), el('p', { class: 'sub', textContent: T.sub + (datos?.creado ? ` · ${datos.creado}` : '') }), el('p', { class: 'intro', textContent: T.intro })),
 )
+// Qué versión es, bien visible arriba: con o sin la llave BóvedaProg (28-sep).
+if (datos?.carteras?.some((c) => c.paquetes?.length)) raiz.append(el('p', { class: 'version con', textContent: T.conBovHdr }))
+else if (datos?.carteras?.some((c) => c.llaves.some((k) => k.boveda))) raiz.append(el('p', { class: 'version', textContent: T.sinBovHdr }))
 if (datos?.carteras?.length) datos.carteras.forEach((c) => raiz.append(tarjeta(c)))
 else generico(raiz)
 // Enlace al código (Leo, 28-sep): un <a> no hace ninguna petición hasta que lo tocas.
