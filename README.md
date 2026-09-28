@@ -7,8 +7,11 @@ el dinero si la app o nuestros servidores dejan de existir.
 - La app genera un **kit personal**: esta misma página con los descriptores de
   tus multifirmas dentro y, sólo si lo activas, el paquete cifrado de
   BóvedaProg.
-- `dist/kit-emergencia.html` es la **versión en blanco**: pegas el descriptor
-  (del PDF de respaldo) y, si lo tienes, el paquete de BóvedaProg.
+- `dist/kit-emergencia.html` es la **versión en blanco**. Dos caminos:
+  - **Sube el PDF de respaldo**: se lee en tu navegador (sus adjuntos traen el
+    descriptor de cada multifirma; con varias, eliges cuál). También sirve
+    `descriptor.txt`, `coldcard.txt`, `specter.json` o `.bsms`.
+  - **O pega el descriptor** (una línea: `wsh(sortedmulti(…`).
 - No hace ninguna petición de red. Su CSP lo prohíbe:
   `default-src 'none'; script-src 'unsafe-inline'`.
 
@@ -36,3 +39,8 @@ Versión en blanco actual: `sha256 31a00af130891da6c07063eb290d46033ee22554f06a9
 
 Código: `src/kit.ts` (TypeScript, sin frameworks). Usa @noble/hashes (argon2),
 @noble/ciphers (xchacha20poly1305), @scure/bip32 y @scure/bip39.
+
+## Tipografías
+
+Van dentro del HTML (subconjunto latino) para que abra sin internet: Fraunces,
+Inter Tight y JetBrains Mono, todas con licencia SIL Open Font License 1.1.

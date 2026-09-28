@@ -15,7 +15,18 @@ const modulos = existsSync(aqui('./node_modules')) ? aqui('./node_modules') : aq
 execFileSync('npx', ['esbuild', aqui('./src/kit.ts'), '--bundle', '--minify', '--format=iife', '--platform=browser', '--target=es2020', `--outfile=${aqui('./dist/kit.js')}`, '--log-level=error'],
   { stdio: 'inherit', env: { ...process.env, NODE_PATH: modulos } })
 const js = readFileSync(aqui('./dist/kit.js'), 'utf8').replace(/<\/script/gi, '<\\/script')
-const html = readFileSync(aqui('./plantilla.html'), 'utf8').replace('/*SCRIPT*/', () => js)
+// Tipografías y logo del sitio DENTRO del archivo: el kit abre sin internet
+// (su CSP sólo deja fuentes e imágenes `data:`). Sólo el subconjunto latino.
+const b64 = (f) => readFileSync(aqui('./recursos/' + f)).toString('base64')
+const fuentes = [
+  ['Fraunces', '400', 'Fraunces-400.woff2'],
+  ['Inter Tight', '400 700', 'InterTight.woff2'],
+  ['JetBrains Mono', '400', 'JetBrainsMono-400.woff2'],
+].map(([fam, peso, f]) => `@font-face{font-family:'${fam}';font-style:normal;font-weight:${peso};font-display:swap;src:url(data:font/woff2;base64,${b64(f)}) format('woff2')}`).join('\n')
+const html = readFileSync(aqui('./plantilla.html'), 'utf8')
+  .replace('/*FUENTES*/', () => fuentes)
+  .replace('/*LOGO*/', () => 'data:image/png;base64,' + b64('logo.png'))
+  .replace('/*SCRIPT*/', () => js)
 writeFileSync(aqui('./dist/kit-emergencia.html'), html)
 if (existsSync(aqui('../src/lib/'))) {
   mkdirSync(aqui('../src/lib/kit/'), { recursive: true })
