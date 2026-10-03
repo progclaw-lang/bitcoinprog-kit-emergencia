@@ -19,13 +19,15 @@ el dinero si la app o nuestros servidores dejan de existir.
 
 Es el mismo cifrado que la app:
 
-- Argon2id(5 palabras, sal; m = 19456 KiB, t = 2, p = 1) → 32 bytes;
+- Argon2id(palabras, sal; m, t y p los trae el paquete) → 32 bytes;
+  · bóvedas hasta octubre de 2026: 5 palabras, m = 19456 KiB, t = 2, p = 1;
+  · bóvedas nuevas: 7 palabras, m = 65536 KiB, t = 3, p = 1;
 - XChaCha20-Poly1305 con el nonce del paquete.
 
 Dentro está la semilla BIP39 de la llave BóvedaProg. El kit comprueba que su
 llave m/48'/0'/0'/2' sea la de la multifirma antes de enseñarla.
 
-⚠️ El paquete más las 5 palabras abren la llave **sin el 2FA**. Guarda el kit
+⚠️ El paquete más las palabras abren la llave **sin el 2FA**. Guarda el kit
 lejos de las palabras.
 
 ## Construir y verificar

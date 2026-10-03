@@ -2,9 +2,10 @@
 // BitcoinProg. Código abierto: https://github.com/progclaw-lang/bitcoinprog-kit-emergencia
 //
 // Lleva (si la app lo metió) el descriptor de cada multifirma y, sólo si el
-// usuario lo activó, el paquete cifrado de BóvedaProg. Con las 5 palabras se
+// usuario lo activó, el paquete cifrado de BóvedaProg. Con sus palabras se
 // abre AQUÍ, en el navegador, con el mismo cifrado que la app:
-//   Argon2id(5 palabras, sal; m=19456 KiB, t=2, p=1) → XChaCha20-Poly1305.
+//   Argon2id(palabras, sal; m/t/p DEL PAQUETE) → XChaCha20-Poly1305.
+//   Bóvedas hasta oct-2026: 5 palabras, m=19456 KiB, t=2. Nuevas: 7 palabras, m=65536 KiB, t=3.
 // La versión en blanco deja SUBIR el PDF de respaldo (se lee aquí mismo: sus
 // adjuntos traen el descriptor de cada multifirma) o pegar el descriptor.
 // Nada sale de esta página: no hace ninguna petición de red.
@@ -33,7 +34,7 @@ const ES = {
   eyebrow: 'Kit de emergencia',
   titulo: 'Recupera tu multifirma sin BitcoinProg',
   sub: 'Funciona sin internet · no guarda ni envía nada',
-  conBovHdr: 'Esta versión INCLUYE la llave BóvedaProg cifrada: se abre con tus 5 palabras. Guárdala lejos de ellas.',
+  conBovHdr: 'Esta versión INCLUYE la llave BóvedaProg cifrada: se abre con tus palabras. Guárdala lejos de ellas.',
   sinBovHdr: 'Esta versión NO incluye la llave BóvedaProg.',
   intro: 'Si la app o nuestros servidores no están, con esta página y tus llaves puedes volver a armar tu multifirma en Sparrow Wallet (gratis, de código abierto) y mover tu dinero. Esta página no se conecta a nada.',
   politica: '{m} de {n}: hacen falta {m} firmas de {n} llaves.',
@@ -44,7 +45,7 @@ const ES = {
   copiar: 'Copiar',
   copiado: 'Copiado',
   bovT: 'Abrir la llave BóvedaProg',
-  bovL: 'Escribe tus 5 palabras de BóvedaProg. Se descifran aquí mismo, en este navegador; tarda unos segundos.',
+  bovL: 'Escribe tus palabras de BóvedaProg (5 o 7). Se descifran aquí mismo, en este navegador; tarda unos segundos.',
   bovBoton: 'Abrir',
   bovAbriendo: 'Abriendo…',
   bovMal: 'Esas palabras no abren esta bóveda. Revisa que sean las 5 y en orden.',
@@ -88,7 +89,7 @@ const EN: typeof ES = {
   eyebrow: 'Emergency kit',
   titulo: 'Recover your multisig without BitcoinProg',
   sub: 'Works offline · stores and sends nothing',
-  conBovHdr: 'This version INCLUDES the encrypted BóvedaProg key: it opens with your 5 words. Keep it away from them.',
+  conBovHdr: 'This version INCLUDES the encrypted BóvedaProg key: it opens with your words. Keep it away from them.',
   sinBovHdr: 'This version does NOT include the BóvedaProg key.',
   intro: 'If the app or our servers are gone, with this page and your keys you can rebuild your multisig in Sparrow Wallet (free, open source) and move your money. This page connects to nothing.',
   politica: '{m} of {n}: {m} signatures from {n} keys are needed.',
@@ -99,7 +100,7 @@ const EN: typeof ES = {
   copiar: 'Copy',
   copiado: 'Copied',
   bovT: 'Open the BóvedaProg key',
-  bovL: 'Enter your 5 BóvedaProg words. They are decrypted right here, in this browser; it takes a few seconds.',
+  bovL: 'Enter your BóvedaProg words (5 or 7). They are decrypted right here, in this browser; it takes a few seconds.',
   bovBoton: 'Open',
   bovAbriendo: 'Opening…',
   bovMal: 'Those words don’t open this vault. Check that all 5 are there and in order.',
